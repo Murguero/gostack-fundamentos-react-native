@@ -1,6 +1,14 @@
 import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 
+interface ProductProps {
+  id: string;
+  title: string;
+  image_url: string;
+  price: number;
+  quantity: number;
+}
+
 export const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
@@ -13,12 +21,11 @@ export const ProductContainer = styled.View`
   flex-direction: row;
 `;
 
-export const ProductList = styled(FlatList).attrs({
+export const ProductList = styled(
+  FlatList as new () => FlatList<ProductProps>,
+).attrs({
   numColumns: 2,
-})`
-  flex: 1;
-  padding: 0 10px;
-`;
+})``;
 
 export const Product = styled.View`
   background: #fff;
@@ -54,3 +61,27 @@ export const ProductPrice = styled.Text`
 `;
 
 export const ProductButton = styled.TouchableOpacity``;
+
+export const ProductQuantity = styled.Text`
+  font-weight: bold;
+  margin-top: 5px;
+  margin-right: 10px;
+
+  font-size: 16px;
+  color: #e83f5b;
+`;
+
+export const ActionContainer = styled.View`
+  align-self: flex-end;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-left: auto;
+`;
+
+export const ActionButton = styled.TouchableOpacity`
+  background: rgba(232, 63, 91, 0.1);
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 5px;
+`;
